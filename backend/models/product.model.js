@@ -33,9 +33,9 @@ const productSchema = mongoose.Schema({
   bestseller : {
     type : Boolean
   },
-  date : {
-    type : Number,
-    required : true
+    createdAt: {  // ✅ tracks when product was added
+    type: Date,
+    default: Date.now
   }
 })
 

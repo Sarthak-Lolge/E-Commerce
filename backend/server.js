@@ -39,7 +39,7 @@ app.use(cors())
 // })
 
 app.use("/api/user", userRouter); // api route for user
-app.use("api/product", productRouter);  //api route of product
+app.use("/api/product", productRouter);  //api route of product
 
 app.listen(process.env.PORT,()=>{
   console.log(`Server is runing on port ${process.env.PORT}`)
