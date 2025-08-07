@@ -2,7 +2,7 @@ import userModel from "../models/user.model.js";
 import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { json } from "express";
+// import { json } from "express";
 
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_TOKEN);
@@ -43,6 +43,8 @@ const userLogin = async(req, res) => {
     })    
   }
 };
+
+
 
 //route for user sign up
 const userSignUp = async (req, res) => {
@@ -97,7 +99,31 @@ const userSignUp = async (req, res) => {
   }
 };
 
+
+
 //route for Admin login
-const admin = (req, res) => {};
+const admin = async(req, res) => {
+  try {
+    const{email,password} = req.body;
+  if (email === "admin@forever.com" && password === "admin123") {
+    const token = jwt.sign((email+password),process.env.JWT_TOKEN);
+    res.json({
+      success:true,
+      token
+    });
+  }
+  else{
+    res.json({
+      success:false,
+      message : "Invalid credentials"
+    })
+  }
+  } catch (error) {
+    res.json({
+      success : false,
+      message : error.message
+    })
+  }
+};
 
 export { userLogin, userSignUp, admin };
