@@ -11,7 +11,6 @@ function Navigation() {
         <Navbar.Brand href="#home">
           <img src={assets.logo} style={{width : "10rem"}}/>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Nav className="ms-5">
             <Nav.Link as={NavLink}>
               <button className='btn btn-danger'>Logout</button>
